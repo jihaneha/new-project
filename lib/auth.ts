@@ -2,9 +2,11 @@
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import { env } from './env';
+import { AuthOptions } from 'next-auth';
+import { prisma } from './prisma';
+import  { PrismaAdapter } from "@next-auth/prisma-adapter"
 
-
-export const authOptions = {
+export const authOptions : AuthOptions = {
   providers: [
     GithubProvider({
       clientId: env.GITHUB_ID ,
@@ -19,7 +21,7 @@ export const authOptions = {
   //   signIn: '/auth'
   // },
   // debug: process.env.NODE_ENV === 'development',
-//   adapter: PrismaAdapter(prismadb),
+  adapter: PrismaAdapter(prisma),
   // session: { strategy: 'jwt' },
   // jwt: {
   //   secret: process.env.NEXTAUTH_JWT_SECRET,
