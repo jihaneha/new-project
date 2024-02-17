@@ -1,7 +1,5 @@
-// import { authOptions } from "@/lib/auth";
-// import nextAuth from "next-auth";
+import { authOptions } from "@/lib/auth";
+import nextAuth from "next-auth";
 
 
-// export default nextAuth(authOptions){
-
-// }
+export default nextAuth(authOptions);
