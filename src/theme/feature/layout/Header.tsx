@@ -3,9 +3,9 @@ import React from "react";
 import { ThemeToggle } from "../../ThemeToggle";
 import { LoginButton } from "./auth/LoginButton";
 
-const Header = async () => {
+export const Header = async () => {
   return (
-    <header className="border-b border-b-accent">
+    <header className="border-b border-b-accent fixed top-0 left-0 right-0 bg-background">
       <div className="container flex items-center py-2 max-w-lg gap-1">
         <h2 className="text-2xl font-bold mr-auto">Demo</h2>
         <ThemeToggle />
@@ -14,5 +14,3 @@ const Header = async () => {
     </header>
   );
 };
-
-export default Header;

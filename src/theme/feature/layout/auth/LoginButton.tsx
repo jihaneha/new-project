@@ -6,8 +6,9 @@ import { signIn } from "next-auth/react";
 
 export const LoginButton = () => {
   return (
-    <Button size="sm">
+    <Button size="sm" onClick={() => signIn()}>
       <LogIn className="mr-2 h-4 w-4" />
+      Login
     </Button>
   );
 };
