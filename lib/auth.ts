@@ -2,7 +2,7 @@
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import { env } from './env';
-import { AuthOptions } from 'next-auth';
+import { AuthOptions, getServerSession } from 'next-auth';
 import { prisma } from './prisma';
 import  { PrismaAdapter } from "@next-auth/prisma-adapter"
 
@@ -17,6 +17,13 @@ export const authOptions : AuthOptions = {
     //   clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
     // }),
   ],
+  callbacks : {
+    session({session,user}){
+      if(!session.user) return session;
+      session.user.id=user.id;
+      return session;
+    }
+  },
   // pages: {
   //   signIn: '/auth'
   // },
@@ -28,4 +35,9 @@ export const authOptions : AuthOptions = {
   // },
   // secret: process.env.NEXTAUTH_SECRET
 };
+
+export const getAuthSession = async ()=>{
+const session = await getServerSession(authOptions);
+return session ;
+}
 
